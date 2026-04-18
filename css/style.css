@@ -1,0 +1,2179 @@
+/*
+Theme Name: grandeur-shinohara
+Author: 倉谷将人
+Description: グランドールシノハラのテーマ
+Version: 1.0
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+	- Normalize
+	- Box sizing
+# Base
+	- Typography
+	- Elements
+	- Links
+	- Forms
+## Layouts
+# Components
+	- Navigation
+	- Posts and pages
+	- Comments
+	- Widgets
+	- Media
+	- Captions
+	- Galleries
+# plugins
+	- Jetpack infinite scroll
+# Utilities
+	- Accessibility
+	- Alignments
+
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Generic
+--------------------------------------------------------------*/
+
+/* Normalize
+--------------------------------------------- */
+
+
+/* Document
+	 ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+:root {
+  --base-color: #fff;
+  --main-color: #a49564;
+  --accent-color: #006400;
+  --accent-color2: #5a5a5a56;
+  --accent-color3: #0f77b9;
+  --text-color: #333;
+}
+
+:root {
+  --font-hero-title: clamp(20px, 2vw, 46px);
+  --font-subtitle: clamp(18px, 3.2vw, 30px);
+  --font-heading: clamp(28px, 4.3vw, 40px);
+  --font-text: clamp(18px, 2.3vw, 32px);
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--base-color);
+  color: #333;
+  line-break: strict;
+  line-height: 2;
+  font-weight: 400px;
+  font-size: 1.6rem;
+  overflow-wrap: break-word;
+  position: relative;
+  overflow-x: hidden;
+  font-family: YuGothic, 游ゴシック, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif;
+  ;
+  font-weight: bold;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;
+}
+
+/* パンくずリスト */
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline;
+}
+
+li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb li+li:before {
+  content: ">";
+  margin: .5em;
+}
+
+.breadcrumb {
+  max-width: 110rem;
+  margin-inline: auto;
+  padding: 1.5rem 2.4rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2.5rem;
+}
+
+.header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.header-logo {
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.logo {
+  font-size: clamp(18px, 1.7vw, 28px);
+  font-weight: bold;
+  color: #a49564;
+}
+
+.header-logo span {
+  color: #a49564;
+  font-size: 14px;
+  display: block;
+  margin-top: -10px;
+}
+
+.header-logo,
+.logo__link:hover {
+  opacity: 0.6;
+  transition: all 0.5s;
+
+}
+
+.header-tel-pc {
+  position: relative;
+  color: var(--accent-color3);
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  width: 310px;
+  padding-top: 15px;
+  margin-top: 5px;
+  margin-right: 40px;
+  text-align: center;
+  display: none;
+  pointer-events: none;
+}
+
+.header-tel-pc::before {
+  content: "お問い合わせはこちらから";
+  font-size: 12px;
+  color: var(--text-color);
+  font-weight: normal;
+  position: absolute;
+  top: -2px;
+  left: 86px;
+  display: inline-block;
+  white-space: pre;
+  font-weight: bold;
+}
+
+
+.fa-phone::before {
+  padding-right: 10px;
+}
+
+.sp-main-navigation {
+  display: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%
+}
+
+.main-navigation {
+  position: fixed;
+  right: 3vw;
+  z-index: 1000;
+  top: 60px;
+  bottom: 0;
+}
+
+.main-navigation__list {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  align-self: center;
+  gap: 40px;
+}
+
+.main-navigation__item li {
+  font-weight: bold;
+}
+
+.conact__time,
+.holiday {
+  font-size: 0.8em;
+  display: block;
+  line-height: 1.6;
+}
+
+.main-navigation__link {
+  opacity: 1;
+  transition: 0.3s;
+  padding-left: 40px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+
+}
+
+.main-navigation__link:first-child {
+  padding: 0;
+}
+
+.main-navigation__link:hover {
+  opacity: 0.5;
+  color: var(--accent-color);
+}
+
+/*concept*/
+.concept,
+.features,
+.infomation,
+.profile,
+.rooms,
+.propertyinfo,
+.interior,
+.roomplan,
+.access,
+.environment,
+.news {
+  margin: 65px auto;
+  width: min(80%, 900px);
+  position: relative;
+}
+
+.concept {
+  margin: 80px auto;
+  width: min(80%, 900px);
+}
+
+
+.slide-copy1 {
+  position: absolute;
+  left: 20px;
+  top: 18%;
+  z-index: 2;
+  display: block;
+}
+
+.slide-copy2 {
+  position: absolute;
+  left: 2rem;
+  bottom: 5%;
+  z-index: 2;
+  background-color: #fff;
+  padding: 0.8em;
+  margin-top: 2.4rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide-title {
+  margin-bottom: 20px;
+  display: inline-block;
+  background-color: var(--accent-color);
+  padding: 0.25em;
+  font-weight: bold;
+  font-size: var(--font-hero-title);
+  color: #fff;
+  position: relative;
+}
+
+.slide__title-tow {
+  margin-right: 20px;
+  display: inline-block;
+  background-color: var(--accent-color);
+  padding: 0.25em;
+  font-weight: bold;
+  font-size: var(--font-hero-title);
+  color: #fff;
+  position: relative;
+  width: 50%;
+}
+
+.slide-bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  transform-origin: right;
+  transform: scalex(0);
+}
+
+.slide-bg-tow {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  transform-origin: right;
+}
+
+.text__bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.text__bg2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #fff;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+
+.copy2 {
+  text-align: center;
+  font-size: clamp(25px, 3.3vw, 30px);
+  font-weight: bold;
+}
+
+.copy-text {
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.concept__title {
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+.top-fastview__tel {
+  margin: 1em 0;
+  text-align: center;
+
+}
+
+.top-fastview__tel .fa-solid {
+  font-size: clamp(28px, 3.6vw, 32px);
+  color: var(--accent-color3);
+  letter-spacing: 0.1em;
+}
+
+.hours-holidays {
+  display: flex;
+  gap: 4px;
+}
+
+.hours-holidays__title,
+.hours-holidays__text {
+  font-size: clamp(14px, 1.8vw, 16px);
+}
+
+
+.concept-title {
+  color: var(--accent-color);
+  font-size: var(--font-subtitle);
+
+}
+
+.concept__subtitle {
+  letter-spacing: 0.05em;
+  padding-bottom: 50px;
+}
+
+.concept-subtitle {
+  font-size: var(--font-subtitle);
+  color: var(--text-color)
+}
+
+.concept-subtitle p {
+  font-size: clamp(17px, 2.2vw, 17px);
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+p {
+  font-size: clamp(17px, 2.2vw, 17px);
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+
+
+.concept__heading {
+  position: relative;
+  margin-bottom: 8em;
+}
+
+.concept__heading::after {
+  display: block;
+  content: "LIFESTYLE";
+  position: absolute;
+  top: 0.1em;
+  left: 0.2em;
+  padding: 0;
+  z-index: -1;
+  font-size: 8em;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--accent-color2);
+}
+
+.concept__image-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.concept__figure {
+  position: relative;
+  margin: 0;
+}
+
+.concept__picture-1 {
+  position: absolute;
+  left: 40em;
+  bottom: -80px;
+  z-index: 1;
+  max-width: 640px;
+  margin-bottom: 45px;
+  border-radius: 14px;
+}
+
+.concept__wrap {
+  position: relative;
+}
+
+.contact {
+  max-width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  margin-right: 1em;
+  margin-left: 1em;
+  border: solid 8px var(--main-color);
+  border-radius: 50px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.contact-title {
+  color: var(--text-color);
+  text-align: center;
+  font-size: clamp(25px, 3.3vw, 30px);
+}
+
+.contact__text {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.contact__tel {
+  text-align: center;
+  font-size: clamp(28px, 3.6vw, 32px);
+  color: var(--accent-color3);
+  letter-spacing: 0.1em;
+}
+
+.contact-company {
+  text-align: center;
+  font-weight: bold;
+  font-size: clamp(25px, 3.3vw, 30px);
+}
+
+.footer {
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: var(--text-color);
+}
+
+.footer__text {
+  text-align: center;
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.footer-navigation__list {
+  display: flex;
+  justify-content: center;
+  padding: 50px 4%;
+  gap: 40px;
+}
+
+.footer-navigation__link {
+  color: #fff;
+  letter-spacing: 0.2em;
+  opacity: 1;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+
+.footer-navigation__link:hover {
+  opacity: 0.5;
+}
+
+/*fatures*/
+.features__title {
+  text-align: center;
+}
+
+.features-title {
+  font-size: var(--font-subtitle);
+  color: var(--text-color);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.features__wrap {
+  position: relative;
+  height: 100%;
+  background: url(./images/apartment-house-image.webp) no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  padding-right: calc(50vw - 50%);
+  padding-left: calc(50vw - 50%);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.features__wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(239, 225, 171, 0.8);
+  z-index: 1;
+}
+
+.feature__wrap>* {
+  position: relative;
+  z-index: 2;
+}
+
+.features-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+}
+
+
+.features__number {
+  font-size: 2em;
+  display: block;
+  text-align: left;
+  color: #4caf50;
+  letter-spacing: 0.01em;
+}
+
+.features__box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.features__box-item {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 300px;
+  border-radius: 14px 14px 0 0;
+  margin: 20px 0;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.features__txt {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+
+}
+
+.features-button {
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+}
+
+
+.features__button-link {
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  width: 100%;
+  max-width: 350px;
+  text-decoration: none;
+  padding: 1em 2em;
+  text-align: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: 200% auto;
+  background-image: linear-gradient(to right, #fff 0%, #fff 50%, var(--accent-color) 50%, var(--accent-color) 100%);
+  transition: background-position .8s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: background-position .8s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+}
+
+
+.features-arrow {
+  content: "";
+  display: inline-block;
+  padding-left: 1em;
+  position: absolute;
+  top: 10px;
+  right: -20px;
+}
+
+
+.features__button-link:hover {
+  background-position: 0 0;
+  color: var(--accent-color);
+}
+
+
+.features__button-link:hover .background_features__button-line path,
+.features__button-link:hover .background_features__button-line line {
+  stroke: var(--accent-color);
+}
+
+/*infomation*/
+
+.information {
+  margin: 20px 0;
+}
+
+.information-title {
+  font-size: var(--font-subtitle);
+  color: var(--text-color);
+  letter-spacing: 0.05em;
+}
+
+.information__list__item {
+  position: relative;
+}
+
+.information__list__item:first-child {
+  border-bottom: 1px solid #c5c3c3;
+}
+
+.information__list__item:last-child {
+  border-bottom: 1px solid #c5c3c3;
+}
+
+.information__list__item a {
+  font-size: var(--font-subtitle);
+  position: relative;
+  display: flex;
+  padding-right: 30px;
+  border-bottom: 1px solid #c5c3c3;
+  padding: 25px 0;
+}
+
+.information__list__item a:hover {
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+
+.information__list__date {
+  font-size: clamp(16px, 2vw, 18px);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.information__list__date p {
+  color: var(--text-color);
+}
+
+.information__list__date p::hover {
+  color: var(--accent-color);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  border: 0.2em solid currentColor;
+  border-left: 0;
+  border-bottom: 0;
+  color: var(--text-color);
+  box-sizing: border-box;
+  transform: translateX(-25%) rotate(45deg);
+  transition: transform 0.5s ease;
+}
+
+.information__list__item a:hover .arrow {
+  animation: arrow-anime 0.5s forwards;
+}
+
+@keyframes arrow-anime {
+  0% {
+    transform: translateX(-30%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(0%) rotate(45deg);
+  }
+}
+
+/*swiper*/
+.swiper-wrap {
+  margin: 0 calc(50% - 50vw);
+  max-width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.swiper-slide-active .slide-img,
+.swiper-slide-duplicate-active .slide-img,
+.swiper-slide-prev .slide-img {
+  animation: zoom-in 10s linear 0s 1 normal both;
+}
+
+.slide-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 3.5vw;
+  font-family: serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px #000;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.slide-img img {
+  object-fit: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: var(--swiper-pagination-bottom, 8px);
+  top: var(--swiper-pagination-top, auto);
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/*オーナー紹介*/
+.top-title {
+  position: relative;
+  width: 100%;
+  height: 26rem;
+  overflow: hidden;
+  background: url(./images/Viewfromoutside.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.top-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.top-title__txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin: 0 auto;
+  text-align: center;
+  font-size: var(--font-heading);
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.profile__title {
+  font-size: var(--font-subtitle);
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.profile__title::before,
+.profile__title::after {
+  content: '';
+  width: 70px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+.profile::before {
+  margin-right: 20px;
+}
+
+.profile::after {
+  margin-left: 20px;
+}
+
+.profile+p {
+  font-size: clamp(17px, 2.2vw, 17px);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  font-weight: normal;
+}
+
+.profile-name {
+  text-align: end;
+  font-size: 20px;
+  padding-top: 15px;
+}
+
+/*空室紹介*/
+.rooms-title__wrap,
+.access-title__wrap,
+.environment__wrap,
+.news__wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.rooms-title {
+  font-size: var(--font-subtitle);
+}
+
+.exterior-title,
+.interior-view-title,
+.room-plan,
+.property-info,
+.access-info,
+.environment-title,
+.news-title,
+.room-title {
+  display: inline-block;
+  font-size: var(--font-heading);
+  letter-spacing: 0.05em;
+  position: relative;
+  padding: 1rem 1rem;
+  border-left: 8px solid var(--accent-color);
+}
+
+.exterior-title::before,
+.interior-view-title::before,
+.room-plan::before,
+.property-info::before,
+.access-info::before,
+.environment-title::before,
+.news-title::before,
+.room-title::before {
+  position: absolute;
+  bottom: 0px;
+  left: -4px;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background: var(--accent-color);
+}
+
+/*画像サムネイルスライダー*/
+.splide-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.main-carousel {
+  margin-bottom: 30px;
+}
+
+#thumbnail-carousel .splide__slide {
+  aspect-ratio: 1 / 1;
+}
+
+#thumbnail-carousel-2 .splide__slide {
+  aspect-ratio: 1 / 1;
+}
+
+.splide__slide {
+  opacity: 0.6;
+}
+
+.splide__slide--thumbail1 {
+  max-width: 100%;
+  /* サムネイルの幅を設定 */
+  max-height: 100%;
+  /* サムネイルの高さを設定 */
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+}
+
+.splide__slide img {
+  max-width: 100%;
+  max-height: 500px;
+  object-position: center;
+  max-height: 500px;
+}
+
+.splide__track--nav>.splide__list>.splide__slide.is-active {
+  border: none !important;
+}
+
+/*画像サムネイルボタン*/
+.splide__arrow {
+  background: inherit !important;
+}
+
+.button {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  padding: 4px 0 0 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  top: 50%;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.button::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-top: solid .3rem var(--text-color);
+  border-right: solid .3rem var(--text-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.button:disabled:before {
+  border-top: solid .5rem #a9a9a9;
+  border-right: solid .5rem #a9a9a9;
+}
+
+.button.__previous {
+  left: 0px;
+}
+
+.button.__prev::before {
+  transform: rotate(-135deg);
+}
+
+.button.__next {
+  right: 0px;
+}
+
+.button.__next::before {
+  transform: rotate(45deg);
+}
+
+.button:not(:disabled):hover {
+  opacity: 0.8;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.caution {
+  margin: 10px 0 0 0;
+}
+
+.caution span {
+  color: red;
+  display: inline-block;
+}
+
+.caution p {
+  font-size: 14px;
+  text-align: left;
+}
+
+/*間取り図*/
+.room-plan__image {
+  width: 350px;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.room-plan__unit {
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.room-plan__unit span {
+  background: var(--accent-color);
+  color: #fff;
+  font-size: var(--fontsize);
+  font-weight: bold;
+  padding: 0.5em;
+}
+
+.room-plan__unit p {
+  font-weight: bold;
+  font-size: var(--fontsize);
+  margin-left: 1em;
+}
+
+/*物件情報*/
+.property-info__table th,
+.property-info__table tr,
+.property-info__table td {
+  border-bottom: 1px solid silver;
+  padding: 15px 0 15px 20px;
+  width: 20%;
+  text-align: left;
+}
+
+.property-info__table tr {
+  display: table-row;
+}
+
+.property-info__table th,
+.property-info__table td {
+  display: table-cell;
+}
+
+.property-info__table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.infomation__list__item a {
+  display: block;
+}
+
+/*ロケーション情報*/
+.location-access {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  row-gap: 20px;
+}
+
+.location-access .fa-solid {
+  font-size: 14px;
+}
+
+.gmap-container {
+  width: 100%;
+  position: relative;
+  padding-top: calc(3 / 4 * 100%);
+  margin-top: 15px;
+}
+
+#gmap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.environment__view h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 30px 0px 0px 0px;
+  ;
+  ;
+}
+
+.environment__item {
+  display: block;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  max-width: 100%;
+}
+
+.environment__item-list {
+  letter-spacing: 0.05em;
+}
+
+/*お知らせ一覧*/
+.news,
+.rooms {
+  margin: 65px auto;
+  width: 90%;
+  max-width: 1400px;
+}
+
+.news__list {
+  max-width: 95%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr max(220px, 22%);
+  gap: 40px;
+}
+
+
+.news__list__item {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.news__list__item {
+  padding: 20px 0;
+  border-bottom: 1px solid #c5c3c3;
+}
+
+.news__list__item:first-child {
+  border-bottom: 1px solid #c5c3c3;
+}
+
+
+.news__list__item a {
+  padding-right: 30px;
+  position: relative;
+  flex: 1;
+}
+
+.news__list__item a:hover {
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.news__list__date {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.news__list__date p {
+  color: var(--text-color);
+  align-items: center;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
+}
+
+.arrow-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  border: 0.2em solid currentColor;
+  border-left: 0;
+  border-bottom: 0;
+  color: var(--text-color);
+  box-sizing: border-box;
+  transform: translateX(-25%) rotate(45deg);
+  transition: transform 0.5s ease;
+}
+
+.news__list__item a:hover .arrow-right {
+  animation: arrow-right 0.5s forwards;
+}
+
+
+@keyframes arrow-right {
+  0% {
+    transform: translateX(-25%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(0%) rotate(45deg);
+  }
+}
+
+/* ページ中央に設置 */
+.pagination {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.pagination .page-numbers {
+  display: inline-block;
+  margin-right: 25px;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  background: #fff;
+  font-weight: bold;
+  transition: all 0.15s linear;
+}
+
+.pagination a.page-numbers:hover {
+  color: #FFF;
+  background-color: var(--accent-color);
+  border-color: #999;
+}
+
+
+
+.pagination .current {
+  padding: 0;
+  background: var(--accent-color);
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.pagination .prev,
+.pagination .next {
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+  position: relative;
+  font-size: 12px;
+}
+
+.pagination-item-link-icon {
+  width: 20px;
+}
+
+.pagination a.next.page-numbers {
+  margin-right: 0;
+}
+
+.pagination .next::before {
+  left: -15px;
+}
+
+.pagination .prev::after {
+  right: -15px;
+}
+
+/* 数字の間のドット */
+.pagination .dots {
+  background: transparent;
+  border: none;
+}
+
+
+/*月別一覧*/
+.archive {
+  margin-top: -20px;
+  padding-top: 5px;
+}
+
+.archive-sidebar__ttl {
+  font-size: var(--font-subtitle);
+  border-bottom: 3px solid var(--accent-color);
+
+}
+
+.archive-list {
+  padding: 10px 10px;
+  line-height: 1;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.archive-list a {
+  padding: 20px 5px;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  line-height: 1;
+  -webkit-transition: all 300ms 0s ease;
+  -o-transition: all 300ms 0s ease;
+  transition: all 300ms 0s ease;
+}
+
+.archive-list a:hover {
+  opacity: 0.5;
+}
+
+.archive-list a::after {
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: block;
+  margin-top: -0.5em;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+
+
+
+/*記事詳細ページ*/
+.article {
+  max-width: 90%;
+}
+
+.article-img {
+  margin-bottom: 1em;
+}
+
+.article-date {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.article-ttl {
+  font-size: 18px;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  border-bottom: solid 2px var(--accent-color);
+}
+
+.pagina {
+  display: flex;
+  gap: 4%;
+  justify-content: space-between;
+  margin-top: 80px;
+  text-align: center;
+}
+
+
+.pagena-prew {
+  width: 48%;
+  border: solid 2px #d7d7d7;
+  padding: 1em 0;
+  position: relative;
+  line-height: 1.3;
+}
+
+.pagena-prew a,
+.pagena-next a {
+  color: var(--text-color);
+  display: inline-block;
+}
+
+.pagena-prew a:hover,
+.pagena-next a:hover {
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+.pagena-next {
+  width: 48%;
+  border: solid 2px #d7d7d7;
+  padding: 1em 1em;
+  position: relative;
+  line-height: 1.3;
+}
+
+.pagena-cat__list {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  text-align: center;
+  margin-top: 2em;
+  background: var(--text-color);
+  margin-bottom: 80px;
+  color: var(--base-color);
+}
+
+.pagena-cat__list:hover {
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+
+/*お部屋一覧*/
+.room__wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.room_desc {
+  padding: 5px 0;
+}
+
+.room__list {
+  max-width: 100%;
+}
+
+.room__list__item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  position: relative;
+
+}
+
+.room-img {
+  max-width: 50%
+}
+
+.room__list__item a {
+  position: relative;
+  flex: 1;
+}
+
+.room__list__item:first-child {
+  border-bottom: 1px solid #c5c3c3;
+  display: block;
+}
+
+.room-tag {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.5em 1em;
+  pointer-events: none;
+
+}
+
+.room__list__item a:hover {
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.room__list__item {
+  padding: 40px 0;
+  border-bottom: 1px solid #c5c3c3;
+}
+
+/*404ページ*/
+.page-404 {
+  margin: 80px auto;
+  width: min(80%, 900px);
+  position: relative;
+}
+
+.page-404__title {
+  font-size: var(--font-heading);
+  margin: 120px 0px 40px 0px;
+}
+
+.page-404__subtitle {
+  padding: 0px 24px 30px 0px;
+  font-size: var(--font-subtitle);
+  font-weight: 700;
+}
+
+.page-404__subtitle p {
+  font-size: var(--font-text);
+}
+
+/*プライバシーポリシー*/
+.policy {
+  margin: 20px 0;
+}
+
+/*タブレットレイアウト*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pagena-next {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .pagina {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 48px;
+  }
+
+  .pagena-prew {
+    width: 100%;
+  }
+
+  .footer-navigation__list {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .pagination .page-numbers {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    margin-right: 20px;
+  }
+
+  .pagination .prev,
+  .pagination .next {
+    font-size: 11px;
+  }
+
+  .pagination-item-link-icon {
+    width: 18px;
+  }
+
+  .concept,
+  .features,
+  .infomation,
+  .profile,
+  .rooms,
+  .interior,
+  .roomplan,
+  .propertyinfo,
+  .access,
+  .environment {
+    margin: 60px auto;
+    width: min(80%, 900px);
+    position: relative;
+  }
+
+  .property-info__table th,
+  .property-info__table tr,
+  .property-info__table td {
+    border-bottom: 1px solid silver;
+    padding: 15px 0 15px 20px;
+    width: 20%;
+    text-align: left;
+  }
+
+  .property-info__table tr {
+    display: table-row;
+  }
+
+  .property-info__table th,
+  .property-info__table td {
+    display: table-cell;
+  }
+
+  .property-info__table {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .infomation__list__item a {
+    display: block;
+  }
+
+  .header-top {
+    padding-right: 0;
+  }
+
+  .header-tel-pc {
+    position: relative;
+    color: var(--accent-color3);
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    width: 310px;
+    margin-top: 5px;
+    margin-right: 20px;
+    text-align: center;
+    display: block;
+
+  }
+
+  .text {
+    padding-bottom: 40px;
+  }
+
+
+  .concept__picture-1 {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+  .features__box {
+    grid-template-columns: auto;
+    justify-content: center;
+  }
+
+  .features__box-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-navigation__link {
+    transition: 0.3s;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+}
+
+
+.footer-btn {
+  display: none;
+}
+
+/*PCレイアウト*/
+@media (min-width:1200px) {
+  .header-tel-pc {
+    position: relative;
+    color: var(--accent-color3);
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    width: 310px;
+    margin-top: 5px;
+    margin-right: 20px;
+    text-align: center;
+    display: block;
+
+  }
+
+  .footer-btn__wrap {
+    display: none;
+  }
+}
+
+/*spレイアウト*/
+@media screen and (max-width: 768px) {
+
+  .rooms-title__wrap,
+  .access-title__wrap,
+  .environment__wrap,
+  .news__wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+
+
+  .concept,
+  .features,
+  .infomation,
+  .profile,
+  .rooms,
+  .interior,
+  .roomplan,
+  .propertyinfo,
+  .access,
+  .environment {
+    margin: 40px auto;
+    width: min(80%, 900px);
+    position: relative;
+  }
+
+  .concept__picture-1 {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    margin-top: 20px;
+    border-radius: 14px;
+  }
+
+  .footer-btn__wrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease-out;
+    transform: translateY(0);
+    z-index: 1000;
+    display: none;
+  }
+
+  .footer-btn__wrap.visible {
+    display: block;
+
+  }
+
+  .footer-btn {
+    position: relative;
+    display: flex;
+    display: block;
+    text-align: center;
+    background-color: var(--accent-color3);
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-btn .close-btn {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  #page-top.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .footer__tel {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    padding: 0.5em 0;
+  }
+
+  .fa-mobile-alt::before,
+  .fa-mobile-screen-button::before {
+    margin-right: 0.5em !important;
+  }
+
+  .holidays-sp__title span {
+    font-size: 14px;
+  }
+
+  .footer__tel,
+  .slide-copy1 {
+    left: 0;
+    top: auto;
+    bottom: 200px;
+
+  }
+
+  .slide-copy2 {
+    left: 0;
+    top: auto;
+  }
+
+  .slide-title {
+    padding: 0.5em;
+    width: fit-content;
+    bottom: 10%;
+    max-width: 85%;
+  }
+
+  .top-fastview__tel,
+  .hours-holidays {
+    display: none;
+  }
+
+  .information__list__date {
+    display: block;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .top-title {
+    height: 20rem;
+  }
+
+  .infomation-item {
+    display: block;
+    padding: 12px 0;
+    margin: 0;
+  }
+
+
+
+  .infomation__list__date {
+    display: block;
+  }
+
+  .news_list_item a {
+    padding-right: 0;
+  }
+
+  .infomation__list__item a {
+    font-size: 14px;
+  }
+
+  .features-button {
+    padding: 30px 0;
+  }
+
+  .header-tel-pc {
+    position: relative;
+    color: var(--accent-color3);
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    width: 310px;
+    margin-top: 5px;
+    margin-right: 20px;
+    text-align: center;
+    display: none;
+
+  }
+
+  .features__box {
+    grid-template-columns: auto;
+    justify-content: center;
+  }
+
+  .features__box-item {
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .concept__subtitle {
+    padding-bottom: 20px;
+  }
+
+  p {
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  .concept__heading {
+    display: none;
+  }
+
+
+  .hamburger {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 300;
+  }
+
+  .header {
+    height: 80px;
+  }
+
+  .hamburger__line {
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    right: 0;
+    background-color: #000;
+    transition: all 0.5s;
+  }
+
+  .hamburger__line-top {
+    top: 1px;
+  }
+
+  .hamburger__line-middle {
+    top: 18px;
+  }
+
+  .hamburger__line-bottom {
+    top: 36px;
+  }
+
+  .open .hamburger__line-top {
+    transform: rotate(40deg);
+    top: 11px;
+  }
+
+  .open .hamburger__line-middle {
+    opacity: 0;
+  }
+
+  .open .hamburger__line-bottom {
+    transform: rotate(-40deg);
+    top: 11px;
+  }
+
+  .sp-main-navigation {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    max-width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    transition: all 0.5s;
+    z-index: 200;
+    overflow-y: auto;
+    display: block;
+    overflow-y: auto;
+
+  }
+
+
+
+  .nav-wrapper {
+    height: 100%;
+  }
+
+  .header-tel-sp {
+    position: relative;
+    color: var(--accent-color3);
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    width: 310px;
+    padding-top: 15px;
+    margin-top: 5px;
+    margin-right: 20px;
+    text-align: center;
+
+  }
+
+  .header-tel-sp::after {
+    content: "お問い合わせはこちらから";
+    font-size: 12px;
+    color: var(--text-color);
+    font-weight: normal;
+    position: absolute;
+    top: -2px;
+    left: 85px;
+    font-weight: bold;
+    display: inline-block;
+    white-space: pre;
+  }
+
+
+  .main-navigation__list {
+    display: block;
+  }
+
+  .main-navigation__item-sp {
+    display: block;
+    padding: 5px 5vw;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+
+  .main-navigation__link-sp:hover {
+    opacity: 0.8;
+    color: var(--accent-color);
+    transition: all .5s ease;
+  }
+
+  .main-navigation {
+    display: none;
+  }
+
+  .open .sp-main-navigation {
+    right: 0;
+  }
+
+  .black-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .open .black-bg {
+    opacity: 0.3;
+    visibility: visible;
+  }
+
+  .footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+
+
+  .footer-navigation__list {
+    gap: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+  }
+
+  .property-info__table th {
+    width: 20%;
+    border-bottom: solid 1px var(--accent-color);
+    padding: 10px 0 0 0;
+    text-align: left;
+  }
+
+  .property-info__table {
+    font-weight: normal;
+  }
+
+  .property-info__table,
+  .property-name {
+    padding: 10px 0 10px 20px;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .splide__slide img {
+    max-height: 300px;
+  }
+
+  .room-img {
+    max-width: 100%
+  }
+
+  .pagination .page-numbers {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 15px;
+  }
+
+  .pagination .prev,
+  .pagination .next {
+    font-size: 10px;
+  }
+
+  .pagination {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .pagena-next {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .pagina {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 48px;
+  }
+
+  .pagena-prew {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .pagination .page-numbers {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 10px;
+  }
+
+  .pagination .prev,
+  .pagination .next {
+    font-size: 9px;
+  }
+
+  .pagena-next {
+    width: 100%;
+  }
+
+}
